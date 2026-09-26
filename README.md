@@ -13,7 +13,7 @@ Wiltiz-Saturator is an original plugin. It does not contain FabFilter source cod
 - Six saturation curves: Warm, Tape, Tube, Soft Clip, Hard Clip, Fold
 - Wet/Dry Mix
 - Output trim
-- HQ 2x mode (lightweight midpoint oversampling approximation)
+- HQ mode (lightweight midpoint processing approximation)
 - Input/output peak meters
 - Dark/black interface
 - State/preset recall through the DAW
