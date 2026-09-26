@@ -140,7 +140,7 @@ void NoirSaturatorAudioProcessorEditor::paint (juce::Graphics& g)
 
     g.setColour (juce::Colour (0xffeeeeee));
     g.setFont (juce::FontOptions (26.0f).withStyle ("Bold"));
-    g.drawText ("NOIR SATURATOR", 32, 24, 350, 40, juce::Justification::centredLeft);
+    g.drawText ("WILTIZ-SATURATOR", 32, 24, 350, 40, juce::Justification::centredLeft);
     g.setColour (juce::Colour (0xff747980));
     g.setFont (12.0f);
     g.drawText ("MULTIBAND HARMONIC COLOR", 34, 60, 300, 18, juce::Justification::centredLeft);
