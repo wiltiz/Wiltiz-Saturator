@@ -1,0 +1,31 @@
+name: Build macOS plugin
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: macos-15
+    steps:
+      - uses: actions/checkout@v4
+      - name: Configure
+        run: cmake -S . -B build -G Xcode -DCMAKE_OSX_ARCHITECTURES=arm64 -DCMAKE_OSX_DEPLOYMENT_TARGET=12.0
+      - name: Build
+        run: cmake --build build --config Release --parallel 3
+      - name: Package VST3 and AU
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p dist
+          vst3=$(find build -type d -name 'Wiltiz-Saturator.vst3' -print -quit)
+          au=$(find build -type d -name 'Wiltiz-Saturator.component' -print -quit)
+          test -n "$vst3" && test -n "$au"
+          cp -R "$vst3" "$au" dist/
+          cd dist
+          zip -qry ../Wiltiz-Saturator-macOS-arm64.zip .
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Wiltiz-Saturator-macOS-arm64
+          path: Wiltiz-Saturator-macOS-arm64.zip
